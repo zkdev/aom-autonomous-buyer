@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from src import logging
 import argparse
+import datetime
 import requests
 import sys
 
@@ -30,7 +31,7 @@ def get_session(username, password):
 
 def purchase_item(session, itemid):
     session.post(PURCHASE_ENDPOINT.format(itemid), csrf_data)
-    logger.info("Bought item {} successfully.".format(str(itemid)))
+    logger.info('Attempt to buy itemid {}'.format(str(itemid)))
 
 
 def get_args():
@@ -38,12 +39,23 @@ def get_args():
     parser.add_argument('--username', action='store', dest='username')
     parser.add_argument('--password', action='store', dest='password')
     parser.add_argument('--itemid', action='store', dest='itemid')
+    parser.add_argument('--desired-time', action='store', dest='desired_time')
     return parser.parse_args()
+
+
+def is_desired_time(desired_time):
+    while True:
+        if str(datetime.datetime.now().strftime('%H:%M:%S.%f')[:-7]) == str(desired_time):
+            return True
+        else:
+            logger.info('Waiting for desired time ... ({} != {})'.format(
+                datetime.datetime.now().strftime('%H:%M:%S.%f')[:-7], desired_time))
 
 
 if __name__ == "__main__":
     args = get_args()
     logger = logging.Logger(__name__)
-    s = get_session(args.username, args.password)
-    purchase_item(s, args.itemid)
+    s = get_session(username=args.username, password=args.password)
+    if is_desired_time(args.desired_time):
+        purchase_item(session=s, itemid=args.itemid)
     sys.exit(0)

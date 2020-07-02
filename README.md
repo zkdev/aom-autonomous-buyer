@@ -8,4 +8,4 @@ Use this tool on your own risk. Little to no coding knowhow is necessary to unde
 ## Usage  
 1. Navigate into `.../aom-buyer`
 2. Install dependencies using `pip3 install -r requirements.txt` 
-3. Execute python script `python3 -m src.main --username "USERNAME" --password "PASSWORD" --itemid ITEMID`
+3. Execute python script `python3 -m src.main --username "USERNAME" --password "PASSWORD" --itemid ITEMID --desired-time "13:54:01"`
