@@ -14,7 +14,7 @@ The search itself extracts the itemshop entry titel and checks whether it contai
 If it finds a match the id is extracted and `POST shop.ageofmenor.cc/mall/purchases/itemid` performed.<br>
 
 ## Installation  
-1. Navigate into `.../aom-buyer`
+1. Navigate into `.../aom-autonomous-buyer`
 2. Install dependencies using `pip3 install -r requirements.txt` 
 
 ## Usage
