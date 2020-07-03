@@ -12,6 +12,7 @@ In case you provide the `--itemid` the tool perfoms `POST shop.ageofmenor.cc/mal
 If you just provide an `--itemname` a list of all Hotdeals is collected and searched for the given `--itemname`.<br>
 The search itself extracts the itemshop entry titel and checks whether it contains the provided `--itemname`.<br>
 If it finds a match the id is extracted and `POST shop.ageofmenor.cc/mall/purchases/itemid` performed.<br>
+In case you provide both `--itemid` and `--itemname`, `POST shop.ageofmenor.cc/mall/purchases/itemid` is performed and the `--itemname` is ignored.
 
 ## Installation  
 1. Navigate into `.../aom-autonomous-buyer`
